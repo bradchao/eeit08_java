@@ -6,7 +6,9 @@ public class Brad03 {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
+		System.out.print("X = ");
 		int x = scanner.nextInt();
+		System.out.print("Y = ");
 		int y = scanner.nextInt();
 		int r1 = x + y;
 		int r2 = x - y;
