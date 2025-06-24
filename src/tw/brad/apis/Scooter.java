@@ -2,6 +2,16 @@ package tw.brad.apis;
 
 public class Scooter extends Bike{
 	private int gear;	// 0
+	private String color;
+	
+	public Scooter() {
+		System.out.println("Scooter()");
+		color = "red";
+	}
+	
+	public String getColor() {
+		return color;
+	}
 	
 	public void upSpeed() {
 		if (gear > 0) {
