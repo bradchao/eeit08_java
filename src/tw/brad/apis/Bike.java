@@ -14,4 +14,10 @@ public class Bike {
 	public double getSpeed() {
 		return speed;
 	}
+	
+	@Override
+	public String toString() {
+		return "Speed:" + speed;
+	}
+	
 }
