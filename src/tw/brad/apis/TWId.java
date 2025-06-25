@@ -28,17 +28,33 @@ public class TWId {
 		}
 		
 	}
+	
+	private TWId(String id) {
+		this.id = id;
+	}
 
 	public String getId() {
 		return id;
 	}
 	
-	
-	/*
-	public TWId(String id) {
-		this.id = id;
+	public boolean isMale() {
+		return true;
 	}
-	*/
+	
+	public String getLocation() {
+		
+		return "台中市";
+	}
+	
+	
+	public static TWId createTWId(String id) {
+		if (isRightID(id)) {
+			return new TWId(id);
+		}else {
+			return null;
+		}
+		
+	}
 	
 	
 	public static boolean isRightID(String id) {

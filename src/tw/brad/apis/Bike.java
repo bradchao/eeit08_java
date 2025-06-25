@@ -3,8 +3,9 @@ package tw.brad.apis;
 public class Bike {
 	protected double speed;
 	
-	public void upSpeed() {
+	public Bike upSpeed() {
 		speed = speed < 1 ? 1 : speed * 1.4;
+		return this;
 	}
 	
 	public void downSpeed() {

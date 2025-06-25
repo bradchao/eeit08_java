@@ -1,5 +1,6 @@
 package tw.brad.tutor;
 
+import tw.brad.apis.Bike;
 import tw.brad.apis.TWId;
 
 public class Brad25 {
@@ -16,6 +17,15 @@ public class Brad25 {
 		System.out.println(id2.getId());
 		System.out.println(id3.getId());
 		System.out.println(id4.getId());
+		
+		TWId id5 = TWId.createTWId("A123456787");
+		if (id5 != null) {
+			System.out.println(id5.getId());
+		}else {
+			System.out.println("xxxxx");
+		}
+		
+		
 	}
 
 }

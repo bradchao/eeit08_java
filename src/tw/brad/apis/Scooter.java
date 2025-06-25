@@ -13,10 +13,11 @@ public class Scooter extends Bike{
 		return color;
 	}
 	
-	public void upSpeed() {
+	public Scooter upSpeed() {
 		if (gear > 0) {
 			speed = speed < 1 ? 1 : speed * 1.8 * gear;
 		}
+		return this;
 	}
 	
 	public int changeGear(int gear) {
