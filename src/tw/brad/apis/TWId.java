@@ -6,6 +6,7 @@ public class TWId {
 	private String id;
 	private static String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
 
+	// Overload 覆載
 	public TWId() {
 		this(new Random().nextBoolean());
 	}

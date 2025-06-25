@@ -14,9 +14,11 @@ class Brad261 {
 	{
 		System.out.println("Brad261{}");
 		m1();
+		m2();
 	}
 	static {
 		System.out.println("Brad261:static{}");
+		m2();
 	}
 	Brad261(){
 		System.out.println("Brad261()");
