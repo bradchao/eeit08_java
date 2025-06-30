@@ -1,15 +1,16 @@
 package tw.brad.apis;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 public class Line {
 	private ArrayList<Point> points;
-	public Line() {
+	private Color color;
+	
+	public Line(Color color) {
 		points = new ArrayList<>();
+		this.color = color;
 	}
-//	public ArrayList<Point> getPoints() {
-//		return points;
-//	}
 	public void addPoint(Point p) {
 		points.add(p);
 	}
@@ -17,4 +18,5 @@ public class Line {
 		return points.get(index);
 	}
 	public int numberOfPoint() {return points.size();}
+	public Color getColor() {return color;}
 }
