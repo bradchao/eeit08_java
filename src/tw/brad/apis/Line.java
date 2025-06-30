@@ -7,13 +7,14 @@ public class Line {
 	public Line() {
 		points = new ArrayList<>();
 	}
-	public ArrayList<Point> getPoints() {
-		return points;
-	}
+//	public ArrayList<Point> getPoints() {
+//		return points;
+//	}
 	public void addPoint(Point p) {
 		points.add(p);
 	}
 	public Point getPoint(int index) {
 		return points.get(index);
 	}
+	public int numberOfPoint() {return points.size();}
 }
