@@ -12,15 +12,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import tw.brad.apis.MyDrawer;
+import tw.brad.apis.MyDrawer2;
 
 public class MySign extends JFrame{
-	private MyDrawer myDrawer;
+	private MyDrawer2 myDrawer;
 	private JButton clear, undo, redo, color;
 	
 	public MySign() {
 		super("簽名 App");
 		
-		myDrawer = new MyDrawer();
+		myDrawer = new MyDrawer2();
 		setLayout(new BorderLayout());
 		add(myDrawer);
 		
