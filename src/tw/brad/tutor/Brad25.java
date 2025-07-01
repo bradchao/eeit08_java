@@ -18,11 +18,19 @@ public class Brad25 {
 		System.out.println(id3.getId());
 		System.out.println(id4.getId());
 		
-		TWId id5 = TWId.createTWId("A123456787");
-		if (id5 != null) {
+//		TWId id5 = TWId.createTWId("A123456787");
+//		if (id5 != null) {
+//			System.out.println(id5.getId());
+//		}else {
+//			System.out.println("xxxxx");
+//		}
+		
+		TWId id5;
+		try {
+			id5 = TWId.createTWId("A123456789");
 			System.out.println(id5.getId());
-		}else {
-			System.out.println("xxxxx");
+		} catch (Exception e) {
+			System.out.println(e);
 		}
 		
 		

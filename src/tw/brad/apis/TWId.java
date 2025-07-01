@@ -33,6 +33,15 @@ public class TWId {
 	private TWId(String id) {
 		this.id = id;
 	}
+	public static TWId createTWId(String id) throws Exception{
+		if (isRightID(id)) {
+			return new TWId(id);
+		}else {
+			//return null;
+			throw new Exception("ID ERROR");
+		}
+		
+	}
 
 	public String getId() {
 		return id;
@@ -48,14 +57,6 @@ public class TWId {
 	}
 	
 	
-	public static TWId createTWId(String id) {
-		if (isRightID(id)) {
-			return new TWId(id);
-		}else {
-			return null;
-		}
-		
-	}
 	
 	
 	public static boolean isRightID(String id) {
