@@ -1,6 +1,8 @@
 package tw.brad.apis;
 
-public class Bike {
+import java.io.Serializable;
+
+public class Bike implements Serializable{
 	protected double speed;
 	
 	public Bike upSpeed() {
