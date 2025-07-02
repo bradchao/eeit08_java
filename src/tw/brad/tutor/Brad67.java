@@ -19,6 +19,7 @@ public class Brad67 {
 			URL url = new URL("https://pdfmyurl.com/index.php?url=https://www.pchome.com.tw");
 			HttpsURLConnection conn = (HttpsURLConnection)url.openConnection();
 			
+			conn.connect();
 			BufferedInputStream bin = 
 				new BufferedInputStream(conn.getInputStream());
 			BufferedOutputStream bout = 
