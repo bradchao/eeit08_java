@@ -10,11 +10,14 @@ import java.net.URLConnection;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class Brad68 {
 
 	public static void main(String[] args) {
 		try {
-			URL url = new URL("https://www.ispan.com.tw");
+			URL url = new URL("https://data.moa.gov.tw/Service/OpenData/ODwsv/ODwsvAgriculturalProduce.aspx");
 			HttpsURLConnection conn = (HttpsURLConnection)url.openConnection();
 			
 			BufferedReader reader = 
@@ -27,16 +30,40 @@ public class Brad68 {
 			reader.close();
 			conn.disconnect();
 			
-			FileOutputStream fout = new FileOutputStream("dir1/iii.html");
-			fout.write(sb.toString().getBytes());
-			fout.close();
-			
-			
-			System.out.println("Finish");
+			parseJSON(sb.toString());
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
+	
+	
+	static void parseJSON(String json) {
+		JSONArray root = new JSONArray(json);
+		System.out.println(root.length());
+		for (int i=0; i<root.length(); i++) {
+			JSONObject row = root.getJSONObject(i);
+			String name = row.getString("Name");
+			String addr = row.getString("SalePlace");
+			String tel = row.getString("ContactTel");
+			String city = row.getString("County");
+			String town = row.getString("Township");
+			System.out.printf("%s : %s : %s%s%s\n", name, tel, city, town, addr);
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
