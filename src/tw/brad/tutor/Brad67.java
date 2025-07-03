@@ -15,15 +15,19 @@ import javax.net.ssl.HttpsURLConnection;
 public class Brad67 {
 
 	public static void main(String[] args) {
+		String target = "https://www.gamer.com.tw";
 		try {
-			URL url = new URL("https://pdfmyurl.com/index.php?url=https://www.pchome.com.tw");
+			URL url = new URL(String.format("https://pdfmyurl.com/index.php?url=%s", target) );
 			HttpsURLConnection conn = (HttpsURLConnection)url.openConnection();
+
+			conn.setRequestMethod("POST");
+			conn.setConnectTimeout(3*1000);
+			conn.setReadTimeout(10*1000);
 			
-			conn.connect();
 			BufferedInputStream bin = 
 				new BufferedInputStream(conn.getInputStream());
 			BufferedOutputStream bout = 
-				new BufferedOutputStream(new FileOutputStream("dir2/momo.pdf"));
+				new BufferedOutputStream(new FileOutputStream("dir2/gamer.pdf"));
 			byte[] buf = new byte[4*1024]; int len; int i= 0;
 			while ((len = bin.read(buf)) != -1) {
 				bout.write(buf, 0, len);
