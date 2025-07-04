@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import tw.brad.apis.MyClock;
 import tw.brad.apis.MyDrawer;
 import tw.brad.apis.MyDrawer2;
 
@@ -37,6 +38,10 @@ public class MySign extends JFrame{
 		saveJpg = new JButton("Save JPEG"); top.add(saveJpg);
 		saveObject = new JButton("Save Object"); top.add(saveObject);
 		loadObject = new JButton("Load Object"); top.add(loadObject);
+		
+		MyClock myClock = new MyClock();
+		top.add(myClock);
+		
 		
 		add(top, BorderLayout.NORTH);
 		
