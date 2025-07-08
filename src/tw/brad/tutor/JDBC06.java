@@ -10,6 +10,7 @@ import java.net.URLConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.Properties;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -48,6 +49,13 @@ public class JDBC06 {
 		prop.setProperty("password", "root");
 		
 		try(Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/brad",prop);) {
+			
+			String delAllSQL = "DELETE FROM gift";
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(delAllSQL);
+			
+			String zeroSQL = "ALTER TABLE gift AUTO_INCREMENT = 1";
+			stmt.executeUpdate(zeroSQL);
 			
 			String sql = "INSERT INTO gift (name,addr,tel,city,town,feature,picurl,lat,lng) " + 
 						"VALUES (?,?,?,?,?,?,?,?,?)";
