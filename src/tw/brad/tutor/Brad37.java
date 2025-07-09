@@ -18,10 +18,10 @@ public class Brad37 {
 		System.out.println(list.get(2));
 		System.out.println("----");
 		
-		Member m1 = new Member(1, "Brad");
-		Member m2 = new Member(2, "Eric");
-		Member m3 = new Member(2, "Tony");
-		Member m4 = new Member(1, "Andy");
+		Member m1 = new Member(1, "Brad","","");
+		Member m2 = new Member(2, "Eric","","");
+		Member m3 = new Member(2, "Tony","","");
+		Member m4 = new Member(1, "Andy","","");
 		LinkedList<Member> ms = new LinkedList<>();
 		ms.add(m1);
 		ms.add(m2);

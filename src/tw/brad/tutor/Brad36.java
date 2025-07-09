@@ -7,10 +7,10 @@ import tw.brad.apis.Member;
 public class Brad36 {
 
 	public static void main(String[] args) {
-		Member m1 = new Member(1, "Brad");
-		Member m2 = new Member(2, "Eric");
-		Member m3 = new Member(2, "Tony");
-		Member m4 = new Member(1, "Andy");
+		Member m1 = new Member(1, "Brad","","");
+		Member m2 = new Member(2, "Eric","","");
+		Member m3 = new Member(2, "Tony","","");
+		Member m4 = new Member(1, "Andy","","");
 		
 		HashSet<Member> members = new HashSet<>();
 		members.add(m1);
