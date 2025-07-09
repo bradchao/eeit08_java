@@ -19,7 +19,7 @@ public class JDBC07 {
 			System.out.print("Keyword:");
 			String key = scanner.next();
 			String search = "%" + key + "%";
-			String sql = "SELECT id, name, tel, addr, city, town, feature FROM gift " +
+			String sql = "SELECT id, name, tel, addr, city, town, feature FROM gift  " +
 						"WHERE name LIKE ? OR feature LIKE ? ORDER BY city, town, addr";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, search);
