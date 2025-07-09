@@ -1,0 +1,17 @@
+商品總銷售量低於 200
+SELECT ProductID, sum(Quantity) sum FROM `orderdetails`
+GROUP BY ProductID
+HAVING sum < 200
+
++-----------+------+
+| ProductID | sum  |
++-----------+------+
+|         9 |   95 |
+|        15 |  122 |
+|        37 |  125 |
+|        48 |  138 |
+|        67 |  184 |
++-----------+------+
+驗算
+SELECT ProductID, sum(Quantity) sum FROM `orderdetails`
+WHERE ProductID = 9
