@@ -15,3 +15,50 @@ HAVING sum < 200
 驗算
 SELECT ProductID, sum(Quantity) sum FROM `orderdetails`
 WHERE ProductID = 9
+--------------------------------------
+各商品的平均單價
+SELECT ProductID, AVG(UnitPrice) avg FROM `orderdetails`
+GROUP BY ProductID
+ORDER BY ProductID
+------------------------------
+SELECT CustomerID, count(OrderID) count FROM `orders`
+GROUP BY CustomerID
+HAVING count > 20
+ORDER BY count DESC
+---------------------------------
+SELECT CompanyName FROM `customers` 
+WHERE CustomerID IN
+(
+    SELECT CustomerID FROM orders
+    WHERE OrderDate BETWEEN '1997-01-01' AND '1997-12-31'
+)
+-------------------------
+
+Charlotte Cooper, Mayumi Ohno
+
+SELECT ProductName, SupplierID FROM `products` 
+WHERE SupplierID IN
+(
+	SELECT SupplierID FROM suppliers
+    WHERE ContactName IN ('Charlotte Cooper')
+)
+-------------------------
+SELECT ProductName FROM `products` 
+WHERE CategoryID = 
+(SELECT CategoryID FROM categories WHERE CategoryName = 'Seafood')
+-----------------------------
+SELECT CompanyName, ContactName, Phone
+FROM suppliers
+WHERE SupplierID IN
+(
+	SELECT SupplierID FROM products
+	WHERE CategoryID = 
+	(
+		SELECT CategoryID FROM categories
+		WHERE CategoryName = 'Seafood'
+	)
+)
+
+
+
+
