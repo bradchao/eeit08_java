@@ -58,7 +58,29 @@ WHERE SupplierID IN
 		WHERE CategoryName = 'Seafood'
 	)
 )
+------------------------------------
+SELECT DISTINCT od.ProductID, od.UnitPrice max FROM `orderdetails` od
+WHERE od.UnitPrice = 
+(
+	SELECT MAX(UnitPrice)
+    FROM orderdetails od2
+    WHERE od.ProductID = od2.ProductID
+)
+72 34.8000
+-----------------------------------
+SELECT o.EmployeeID, SUM(od.UnitPrice*od.Quantity) sum FROM `orders` o
+JOIN orderdetails od ON o.OrderID = od.OrderID
+JOIN employees e ON o.EmployeeID = e.EmployeeID
+GROUP BY o.EmployeeID
+ORDER BY sum desc
 
-
+5 : 75567.7500
+------------------------------------------
+SELECT SUM(UnitPrice*Quantity) FROM `orderdetails` 
+WHERE OrderID IN
+(
+	SELECT OrderID FROM orders
+    WHERE EmployeeID = 5
+)
 
 
