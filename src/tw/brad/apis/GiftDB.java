@@ -3,6 +3,7 @@ package tw.brad.apis;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import java.util.Properties;
 
@@ -11,10 +12,11 @@ public class GiftDB {
 	private static final String USER = "root";
 	private static final String PASSWORD = "root";
 	private static final String querySQL = """
-		SELECT id, name, feature, tel FROM gift
+		SELECT id 編號, name 名稱, feature 特色說明, tel 電話, city 縣市 FROM gift
 							""";
 	private Connection conn;
 	private ResultSet rs;
+	private String[] fieldNames;
 	
 	public GiftDB() throws Exception {
 		Properties prop = new Properties();
@@ -28,6 +30,11 @@ public class GiftDB {
 		Statement stmt = conn.createStatement(
 				ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 		rs = stmt.executeQuery(sql);
+		ResultSetMetaData rsmd = rs.getMetaData();
+		fieldNames = new String[rsmd.getColumnCount()];
+		for (int i=0; i<fieldNames.length; i++) {
+			fieldNames[i] = rsmd.getColumnLabel(i+1);
+		}
 	}
 	
 	public int getRows() {
@@ -40,7 +47,7 @@ public class GiftDB {
 	}
 	
 	public int getCols() {
-		return 4;
+		return fieldNames.length;
 	}
 	// row, col => 0-base
 	public String getData(int row, int col) {
@@ -49,6 +56,32 @@ public class GiftDB {
 			return rs.getString(col+1);
 		}catch(Exception e) {
 			return "#ERROR";
+		}
+	}
+	
+	public String getColName(int col) {
+		return fieldNames[col];
+	}
+	
+	public void updateData(int row, int col, String newdata) {
+		if (col != 0) {
+			try {
+				rs.absolute(row+1);
+				rs.updateString(col+1, newdata);
+				rs.updateRow();
+			}catch(Exception e) {
+				System.out.println(e);
+			}
+		}
+	}
+	
+	
+	public void delData(int row) {
+		try {
+			rs.absolute(row+1);
+			rs.deleteRow();
+		}catch(Exception e) {
+			System.out.println(e);
 		}
 	}
 	
