@@ -2,12 +2,14 @@ package tw.brad.apis;
 
 import java.util.Objects;
 
+// DTO / Entity
 public class Member {
 	private int id;
 	private String name;
 	private String passwd;	// plain or hash => plain
 	private String account;
 	
+	public Member() {}
 	public Member(int id, String name, String account, String passwd){
 		this.id = id; this.name = name;
 		this.account = account; this.passwd = passwd;
@@ -32,7 +34,14 @@ public class Member {
 	public String getAccount() {
 		return account;
 	}
-
+	public void setId(int id) {
+		this.id = id;
+	}
+	public void setAccount(String account) {
+		this.account = account;
+	}
+	
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) return true;
