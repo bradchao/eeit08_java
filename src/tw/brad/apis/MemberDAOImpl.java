@@ -31,12 +31,11 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public void updateMember(Member member) {
-		String sql = "UPDATE member SET account = ?, passwd = ?, name = ? WHERE id = ?";
+		String sql = "UPDATE member SET account = ?, name = ? WHERE id = ?";
 		try (PreparedStatement pstmt = conn.prepareStatement(sql)){
 			pstmt.setString(1, member.getAccount());
-			pstmt.setString(2, BCrypt.hashpw(member.getPasswd(), BCrypt.gensalt()) );
-			pstmt.setString(3, member.getName());
-			pstmt.setInt(4, member.getId());
+			pstmt.setString(2, member.getName());
+			pstmt.setInt(3, member.getId());
 			pstmt.executeUpdate();
 		}catch(Exception e) {
 			System.out.println(e);
@@ -63,9 +62,9 @@ public class MemberDAOImpl implements MemberDAO{
 			if (rs.next()) {
 				Member member = new Member(
 						rs.getInt("id"),
+						rs.getString("name"),
 						rs.getString("account"),
-						rs.getString("passwd"),
-						rs.getString("name")
+						rs.getString("passwd")
 						);
 				return member;
 			}
